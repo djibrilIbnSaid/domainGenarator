@@ -1,5 +1,6 @@
 .DS_Store
 src/__pycache__
+data/*.json
 
 
 # Byte-compiled / optimized / DLL files
