@@ -42,6 +42,9 @@ cp .env.example .env
 ```
 ├── notebooks/
 ├── src/
+│   ├── __init__.py
+│   ├── generateur_domaine.py                  # Générateur principal
+│   └── utils.py                               # Utilitaires
 ├── api/
 ├── data/
 ├── tests/
