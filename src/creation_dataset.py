@@ -53,8 +53,8 @@ class CreationDataset:
             "écologique", "durable", "artisanal", "personnalisé", "professionnel"
         ]
         self.extensions = [
-            ".com", ".fr", ".org", ".net", ".eu", ".co", '.io', '.ai', '.info',
-            '.tech', '.store', '.online', '.app', '.shop', '.site', '.cloud',
+            ".com", ".fr", ".org", ".net", ".eu", ".co", ".io", ".ai", ".info",
+            ".tech", ".store", ".online", ".app", ".shop", ".site", ".cloud", ".it",
         ]
 
 

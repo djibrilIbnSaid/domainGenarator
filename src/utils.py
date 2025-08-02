@@ -89,3 +89,30 @@ def charger_json(filepath: str) -> Dict[Any, Any]:
     except json.JSONDecodeError:
         logger.error(f"Erreur de décodage JSON dans {filepath}")
         return {}
+
+
+def nettoyer_nom_domaine(domaine: str) -> str:
+    """
+    Nettoie et normalise un nom de domaine.
+    
+    Args:
+        domaine: Nom de domaine brut
+        
+    Returns:
+        str: Nom de domaine nettoyé
+    """
+    # Supprimer les espaces et caractères spéciaux
+    domaine = domaine.strip().lower()
+    
+    # Supprimer http:// ou https://
+    if domaine.startswith(('http://', 'https://')):
+        domaine = domaine.split('://', 1)[1]
+    
+    # Supprimer www.
+    if domaine.startswith('www.'):
+        domaine = domaine[4:]
+    
+    # Garder seulement les caractères alphanumériques, tirets et points
+    domaine_nettoye = ''.join(c for c in domaine if c.isalnum() or c in '.-')
+    
+    return domaine_nettoye
