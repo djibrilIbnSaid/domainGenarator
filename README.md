@@ -43,8 +43,10 @@ cp .env.example .env
 ├── notebooks/
 ├── src/
 │   ├── __init__.py
-│   ├── generateur_domaine.py                  # Générateur principal
-│   └── utils.py                               # Utilitaires
+│   ├── creation_dataset.py                         # Création de datasets
+│   ├── garde_fous.py                               # Système de sécurité
+│   ├── generateur_nom_domaine.py                   # Générateur principal
+│   └── utils.py                                    # Utilitaires
 ├── api/
 ├── data/
 ├── tests/
