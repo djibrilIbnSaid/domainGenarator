@@ -246,7 +246,7 @@ class CreationDataset:
             nom_fichier = f"dataset_complet_{generate_timestamp()}.json"
         
         # Créer le dataset principal
-        dataset_entrainement = self.creer_dataset_entrainement(800)
+        dataset_entrainement = self.creer_dataset_entrainement(1000)
         cas_limites = self.creer_cas_limites()
         
         dataset_complet = {

@@ -28,6 +28,7 @@ def load_config():
         "debug": os.getenv("DEBUG", "True").lower() == "true",
         "openai_api_key": os.getenv("OPENAI_API_KEY", ""),
         "openai_model": os.getenv("OPENAI_MODEL", "gpt-3.5-turbo"),
+        "ollama_model_juge": os.getenv("OLLAMA_MODEL_JUGE", "deepseek-r1")
     }
 
 def remove_accents(input_str: str) -> str:
@@ -116,3 +117,28 @@ def nettoyer_nom_domaine(domaine: str) -> str:
     domaine_nettoye = ''.join(c for c in domaine if c.isalnum() or c in '.-')
     
     return domaine_nettoye
+
+
+def sauvegarder_json(data: Dict[Any, Any], filepath: str) -> None:
+    """
+    Sauvegarde des données au format JSON.
+    
+    Args:
+        data: Données à sauvegarder
+        filepath: Chemin du fichier de destination
+    """
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    
+    with open(filepath, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    
+    logger.info(f"Données sauvegardées dans {filepath}")
+    
+def generer_timestamp() -> str:
+    """
+    Génère un timestamp pour nommer les fichiers.
+    
+    Returns:
+        str: Timestamp au format YYYYMMDD_HHMMSS
+    """
+    return datetime.now().strftime("%Y%m%d_%H%M%S")

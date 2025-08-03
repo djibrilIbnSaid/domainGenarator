@@ -1,6 +1,7 @@
 .DS_Store
 src/__pycache__
 data/*.json
+data/evaluations/*.json
 
 
 # Byte-compiled / optimized / DLL files
