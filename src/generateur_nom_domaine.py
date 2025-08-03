@@ -32,7 +32,7 @@ class GenerateurNomsDomaine:
             self.llm = OllamaLLM(
                 model=self.model,
                 base_url=self.config["ollama_base_url"],
-                temperature=0.7,
+                temperature=0.9,
                 top_p=0.9,
                 num_predict=256
             )

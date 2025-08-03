@@ -46,9 +46,12 @@ cp .env.example .env
 │   ├── creation_dataset.py                         # Création de datasets
 │   ├── garde_fous.py                               # Système de sécurité
 │   ├── generateur_nom_domaine.py                   # Générateur principal
+│   ├── evaluateur_llm.py                           # Système d'évaluation
 │   └── utils.py                                    # Utilitaires
 ├── api/
 ├── data/
+│   ├── dataset_experimental.json                   # Dataset généré pour les tests par la classe 
+│   └── evaluations/                                # Résultats d'évaluations`CreationDataset`
 ├── tests/
 ├── docs/
 ├── requirements.txt
