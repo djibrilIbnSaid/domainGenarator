@@ -229,6 +229,10 @@ class EvaluateurLLM:
                 reponse_nettoyee = reponse_nettoyee[7:]
             if reponse_nettoyee.endswith("```"):
                 reponse_nettoyee = reponse_nettoyee[:-3]
+            if reponse_nettoyee.startswith("```"):
+                reponse_nettoyee = reponse_nettoyee[3:]
+            if reponse_nettoyee.endswith("```"):
+                reponse_nettoyee = reponse_nettoyee[:-3]
             
             # Parser le JSON
             data = json.loads(reponse_nettoyee)

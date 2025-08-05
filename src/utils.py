@@ -28,7 +28,8 @@ def load_config():
         "debug": os.getenv("DEBUG", "True").lower() == "true",
         "openai_api_key": os.getenv("OPENAI_API_KEY", ""),
         "openai_model": os.getenv("OPENAI_MODEL", "gpt-3.5-turbo"),
-        "ollama_model_juge": os.getenv("OLLAMA_MODEL_JUGE", "deepseek-r1")
+        "ollama_model_juge": os.getenv("OLLAMA_MODEL_JUGE", "deepseek-r1"),
+        "ollama_num_predict": int(os.getenv("MAX_TOKENS", 256)),
     }
 
 def remove_accents(input_str: str) -> str:

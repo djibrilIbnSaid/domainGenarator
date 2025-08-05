@@ -5,6 +5,7 @@ Ce module utilise Ollama et Langchain pour générer des suggestions
 de noms de domaine basées sur des descriptions business.
 """
 import time
+import re
 import json
 from typing import Dict, List
 
@@ -32,9 +33,7 @@ class GenerateurNomsDomaine:
             self.llm = OllamaLLM(
                 model=self.model,
                 base_url=self.config["ollama_base_url"],
-                temperature=0.9,
-                top_p=0.9,
-                num_predict=256
+                num_predict=self.config.get("ollama_num_predict", 256),
             )
             logger.info(f"Modèle {self.model} initialisé avec succès")
         except Exception as e:
@@ -188,8 +187,14 @@ class GenerateurNomsDomaine:
         try:
             # Nettoyer la réponse (supprimer les backticks, etc.)
             reponse_nettoyee = reponse.strip()
+            reponse_nettoyee = re.sub(r'<think>.*?</think>', '', reponse_nettoyee, flags=re.DOTALL)
+            reponse_nettoyee = reponse_nettoyee.strip()
             if reponse_nettoyee.startswith("```json"):
                 reponse_nettoyee = reponse_nettoyee[7:]
+            if reponse_nettoyee.endswith("```"):
+                reponse_nettoyee = reponse_nettoyee[:-3]
+            if reponse_nettoyee.startswith("```"):
+                reponse_nettoyee = reponse_nettoyee[3:]
             if reponse_nettoyee.endswith("```"):
                 reponse_nettoyee = reponse_nettoyee[:-3]
             
