@@ -61,7 +61,7 @@ class GardeFousSecurite:
         self.termes_interdits = {
             'contenu_adulte': [
                 'adult', 'porn', 'sex', 'nude', 'explicit',
-                'adulte', 'sexe', 'nu', 'explicite', 'x'
+                'adulte', 'sexe', 'nu', 'explicite',
             ],
             'violence': [
                 'violence', 'weapon', 'kill', 'murder', 'terror',
@@ -316,14 +316,14 @@ class GardeFousSecurite:
             reponse_nettoyee = re.sub(r'<think>.*?</think>', '', reponse_nettoyee, flags=re.DOTALL)
             reponse_nettoyee = reponse_nettoyee.strip()
             if reponse_nettoyee.startswith("```json"):
-                reponse_nettoyee = reponse_nettoyee[7:]
+                reponse_nettoyee = reponse_nettoyee[7:].strip()
             if reponse_nettoyee.endswith("```"):
-                reponse_nettoyee = reponse_nettoyee[:-3]
+                reponse_nettoyee = reponse_nettoyee[:-3].strip()
             if reponse_nettoyee.startswith("```"):
-                reponse_nettoyee = reponse_nettoyee[3:]
+                reponse_nettoyee = reponse_nettoyee[3:].strip()
             if reponse_nettoyee.endswith("```"):
-                reponse_nettoyee = reponse_nettoyee[:-3]
-            
+                reponse_nettoyee = reponse_nettoyee[:-3].strip()
+
             # Parser le JSON
             return json.loads(reponse_nettoyee)
                 

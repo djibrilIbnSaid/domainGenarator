@@ -36,6 +36,11 @@ cp .env.example .env
 
 ### Utilisation
 
+#### Lancer l'API
+```bash
+python api/main.py
+```
+
 
 ### Structure du Projet
 

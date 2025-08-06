@@ -226,14 +226,14 @@ class EvaluateurLLM:
             reponse_nettoyee = re.sub(r'<think>.*?</think>', '', reponse_nettoyee, flags=re.DOTALL)
             reponse_nettoyee = reponse_nettoyee.strip()
             if reponse_nettoyee.startswith("```json"):
-                reponse_nettoyee = reponse_nettoyee[7:]
+                reponse_nettoyee = reponse_nettoyee[7:].strip()
             if reponse_nettoyee.endswith("```"):
-                reponse_nettoyee = reponse_nettoyee[:-3]
+                reponse_nettoyee = reponse_nettoyee[:-3].strip()
             if reponse_nettoyee.startswith("```"):
-                reponse_nettoyee = reponse_nettoyee[3:]
+                reponse_nettoyee = reponse_nettoyee[3:].strip()
             if reponse_nettoyee.endswith("```"):
-                reponse_nettoyee = reponse_nettoyee[:-3]
-            
+                reponse_nettoyee = reponse_nettoyee[:-3].strip()
+
             # Parser le JSON
             data = json.loads(reponse_nettoyee)
             
